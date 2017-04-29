@@ -40,7 +40,7 @@ public class LoginForm extends JFrame implements UserHandler {
     private void initComponents() {
 
         jTextField1UserName = new javax.swing.JTextField();
-        javax.swing.JTextField jTextPassword = new javax.swing.JTextField();
+        jTextPassword = new javax.swing.JTextField();
         javax.swing.JLabel jLabel1UserName = new javax.swing.JLabel();
         javax.swing.JLabel jLabel1UserName1 = new javax.swing.JLabel();
         jLogin = new javax.swing.JButton();
@@ -114,6 +114,7 @@ public class LoginForm extends JFrame implements UserHandler {
     private void startLoginProccess(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
 
+        UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -188,7 +189,7 @@ public class LoginForm extends JFrame implements UserHandler {
     private javax.swing.JButton jLogin;
     private javax.swing.JLabel jLabelCreateAccount;
     private javax.swing.JTextField jTextField1UserName;
-
+    javax.swing.JTextField jTextPassword;
     @Override
     public void onSuccessLogin() {
         System.out.println("OnSuccessLogin");

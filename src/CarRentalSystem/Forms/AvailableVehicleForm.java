@@ -6,28 +6,29 @@
 package CarRentalSystem.Forms;
 
 import javax.swing.*;
-import java.text.*;
-import java.util.*;
+
+import CarRentalSystem.Pojos.Cars;
 
 
 /**
  *
  * @author Radcliffe Brown-H000063206-CKIT-510-2-Week3 Writing a number converter
  */
-public class ObjectOrientedProgramAvailableVehicleForm extends JFrame {
+public class AvailableVehicleForm extends JFrame {
 
     /**
      * Creates new form NumberConverterUI
      */
-    public ObjectOrientedProgramAvailableVehicleForm() {
+    public AvailableVehicleForm() {
         initComponents();
         myListBoxHandler();
     }
     
     
-   
+
     //create new instance of list item
-    DefaultListModel<String> myListBoxmodel = new DefaultListModel<>(); 
+    Cars cars = Cars.getInstance();
+    DefaultListModel<String> myListBoxmodel = new DefaultListModel<>();
     
      
     
@@ -205,7 +206,7 @@ jPanelStartTimeLayout.setHorizontalGroup(
     });
 
     jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-    jLabel4.setText("Number of Available cars:");
+    jLabel4.setText("Number of Available cars:"+cars.getCars().get(0).getAvailable().size());
     jLabel4.setToolTipText("");
 
     jListAvailableVehicles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -225,7 +226,7 @@ jPanelStartTimeLayout.setHorizontalGroup(
             .addGroup(jPanel2Layout.createParallelGroup(GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(605, 605, 605)
-                    .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 185, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel4, GroupLayout.PREFERRED_SIZE, 200, GroupLayout.PREFERRED_SIZE))
                 .addComponent(jScrollPane3, GroupLayout.PREFERRED_SIZE, 846, GroupLayout.PREFERRED_SIZE))
             .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
             .addComponent(jButtonSelectRental, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE)
@@ -308,6 +309,10 @@ jPanelStartTimeLayout.setHorizontalGroup(
     //prevent the overwriting of periouse appointment
     private void myListBoxHandler() 
     {
+
+        cars.getCars().get(0).getAvailable().forEach(e->myListBoxmodel.addElement(e.getName()));
+
+
        jListAvailableVehicles.setModel(myListBoxmodel);   
     }
     
@@ -329,13 +334,13 @@ jPanelStartTimeLayout.setHorizontalGroup(
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ObjectOrientedProgramAvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ObjectOrientedProgramAvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ObjectOrientedProgramAvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ObjectOrientedProgramAvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AvailableVehicleForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -347,11 +352,7 @@ jPanelStartTimeLayout.setHorizontalGroup(
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ObjectOrientedProgramAvailableVehicleForm().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new AvailableVehicleForm().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

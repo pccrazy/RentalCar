@@ -13,6 +13,8 @@ import static CarRentalSystem.Utilities.JsonFileReader.jsonToPojo;
  */
 public class User {
     List<User> Users = new ArrayList<>();
+    List<User> test = new ArrayList<>();
+
     String username;
     String password;
     String accountType;
