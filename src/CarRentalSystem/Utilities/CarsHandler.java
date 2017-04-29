@@ -9,7 +9,4 @@ import static CarRentalSystem.Utilities.JsonFileReader.jsonToPojo;
  */
 public class CarsHandler {
 
-
-
-
 }
