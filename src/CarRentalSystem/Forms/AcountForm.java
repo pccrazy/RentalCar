@@ -5,11 +5,15 @@
  */
 package CarRentalSystem.Forms;
 
+import CarRentalSystem.Pojos.User;
+
 /**
  *
  * @author H121709
  */
 public class AcountForm extends javax.swing.JFrame {
+
+    User user = User.getInstance();
 
     /**
      * Creates new form CreateAcountFrame
