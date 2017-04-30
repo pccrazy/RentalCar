@@ -8,11 +8,14 @@ package CarRentalSystem.Forms;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.*;
 
 import CarRentalSystem.Pojos.User;
 import CarRentalSystem.Utilities.UserHandler;
+
+
+
 
 /**
  *
@@ -112,9 +115,14 @@ public class LoginForm extends JFrame implements UserHandler {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startLoginProccess(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //
         // TODO add your handling code here:
 
+
+
         UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
+
+
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -192,14 +200,35 @@ public class LoginForm extends JFrame implements UserHandler {
     javax.swing.JTextField jTextPassword;
     @Override
     public void onSuccessLogin() {
+        //Todo radclifee go to next GUI , close current
+
+        AvailableVehicleForm jf = new AvailableVehicleForm();
+        jf.setTitle("Available Vehicles");
+
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+        Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
+        middle.y - (jf.getHeight() / 2));
+
+        jf.pack();
+
+        jf.setLocation(newLocation);
+
+        jf.setVisible(true);
+
         System.out.println("OnSuccessLogin");
     }
 
     @Override
     public void onUnSuccessLogin() {
+        // Todo show an error message as what they have toaught us in the module
+
+        JOptionPane.showMessageDialog(null, "Invalid Login!, Please try again");
+
         System.out.println("On Error Login");
     }
-
 
     // End of variables declaration//GEN-END:variables
 }
