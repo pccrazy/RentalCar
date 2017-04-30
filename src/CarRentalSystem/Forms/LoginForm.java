@@ -225,7 +225,7 @@ public class LoginForm extends JFrame implements UserHandler {
     public void onUnSuccessLogin() {
         // Todo show an error message as what they have toaught us in the module
 
-        JOptionPane.showMessageDialog(null, "Invalid Login!, Please try again");
+        JOptionPane.showMessageDialog(null, "Wrong Login!, Please try again");
 
         System.out.println("On Error Login");
     }
