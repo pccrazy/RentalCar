@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import CarRentalSystem.Pojos.User;
+import CarRentalSystem.Utilities.UserHelper;
 //import CarRentalSystem.Utilities.UserHandler;
 
 /**
@@ -17,7 +18,7 @@ import CarRentalSystem.Pojos.User;
 public class MainForm extends javax.swing.JFrame {
 
 
-   User user=User.getInstance();
+   UserHelper user=UserHelper.getInstance();
 
 
     /**

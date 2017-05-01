@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import javax.swing.*;
+
 import CarRentalSystem.Pojos.User;
 
 /** Created by CodeCrazy on 4/29/17. */
@@ -74,6 +76,8 @@ public class UserHelper {
     }
   }
 
+
+
     public void createNewUser() {
         Gson gson=new Gson();
         String json =  gson.toJson(Users);
@@ -89,6 +93,7 @@ public class UserHelper {
           //  write(json);
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error creating account!, Please try again");
             e.printStackTrace();
         }
 
