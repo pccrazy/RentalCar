@@ -203,12 +203,16 @@ public class LoginForm extends JFrame implements UserHandler {
         //Todo radclifee go to next GUI , close current
 
         AvailableVehicleForm jf = new AvailableVehicleForm();
-        jf.setTitle("Available Vehicles");
+        jf.setTitle("Available Hire Cars");
 
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        Point middle = new Point(screenSize.width / 2, screenSize.height / 2);
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        Point middle = new Point(width / 2, height / 2);
         Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
         middle.y - (jf.getHeight() / 2));
 

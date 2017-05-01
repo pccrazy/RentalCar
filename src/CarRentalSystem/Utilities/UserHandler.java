@@ -23,5 +23,4 @@ public interface UserHandler {
 
     void onSuccessLogin();
     void onUnSuccessLogin();
-
 }

@@ -7,6 +7,11 @@ package CarRentalSystem.Forms;
 
 import CarRentalSystem.Pojos.User;
 
+import java.awt.*;
+import javax.swing.*;
+
+import CarRentalSystem.Utilities.UserHandler;
+
 /**
  *
  * @author H121709
@@ -188,4 +193,42 @@ public class AcountForm extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
+
+
+
+    public void onSuccessAccount() {
+        //Todo radclifee go to next GUI , close current
+
+        AvailableVehicleForm jf = new AvailableVehicleForm();
+        jf.setTitle("Available Vehicles");
+
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+
+        Point middle = new Point(width / 2, height / 2);
+        Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
+                middle.y - (jf.getHeight() / 2));
+
+        jf.pack();
+
+        jf.setLocation(newLocation);
+
+        jf.setVisible(true);
+
+        System.out.println("OnSuccessAccount");
+    }
+
+    //@Override //Todo check the correctness of this anwar I have remove it for testing
+    public void onUnSuccessAccoun() {
+        // Todo show an error message as what they have toaught us in the module
+
+        JOptionPane.showMessageDialog(null, "Error creating account!, Please try again");
+
+        System.out.println("On Error Account");
+    }
 }
