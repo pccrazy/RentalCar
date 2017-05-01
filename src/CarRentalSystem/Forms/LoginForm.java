@@ -11,19 +11,17 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import java.awt.*;
 
-import CarRentalSystem.Pojos.User;
-import CarRentalSystem.Utilities.UserHandler;
-
-
+import CarRentalSystem.Utilities.UserSessionHandler;
+import CarRentalSystem.Utilities.UserHelper;
 
 
 /**
  *
  * @author H121709
  */
-public class LoginForm extends JFrame implements UserHandler {
+public class LoginForm extends JFrame implements UserSessionHandler {
 
-    User user=User.getInstance();
+    UserHelper user= UserHelper.getInstance();
 
 
     /**
@@ -120,7 +118,7 @@ public class LoginForm extends JFrame implements UserHandler {
 
 
 
-        UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
+        UserSessionHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
 
 
 
@@ -198,6 +196,12 @@ public class LoginForm extends JFrame implements UserHandler {
     private javax.swing.JLabel jLabelCreateAccount;
     private javax.swing.JTextField jTextField1UserName;
     javax.swing.JTextField jTextPassword;
+
+    @Override
+    public void onNewAccountCreated() {
+
+    }
+
     @Override
     public void onSuccessLogin() {
         //Todo radclifee go to next GUI , close current

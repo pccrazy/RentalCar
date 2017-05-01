@@ -8,7 +8,7 @@ import CarRentalSystem.Pojos.User;
 public interface UserHandler {
 
     static void login(String username, String passwrod){
-            User user = User.getInstance();
+        UserHelper user = UserHelper.getInstance();
             boolean found = user.getUsers().stream().filter(o -> {
                 User validator=(User)o;
                 return validator.getUsername().equals(username)
