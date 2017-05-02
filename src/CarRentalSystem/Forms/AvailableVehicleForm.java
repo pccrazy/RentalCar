@@ -258,18 +258,10 @@ public class AvailableVehicleForm extends JFrame {
         );
 
         jButtonAdmin.setText("Admin");
-        jButtonAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAdminActionPerformed(evt);
-            }
-        });
+        jButtonAdmin.addActionListener(evt -> jButtonAdminActionPerformed(evt));
 
         jButtonClose.setText("Close");
-        jButtonClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonCloseActionPerformed(evt);
-            }
-        });
+        jButtonClose.addActionListener(evt -> jButtonCloseActionPerformed(evt));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
