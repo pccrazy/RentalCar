@@ -10,11 +10,11 @@ import CarRentalSystem.Pojos.User;
 import java.awt.*;
 import javax.swing.*;
 
+import CarRentalSystem.Utilities.CustomeException;
 import CarRentalSystem.Utilities.UserHandler;
 
 /**
- *
- * @author H121709
+ * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
  */
 public class AcountForm extends javax.swing.JFrame {
 
@@ -139,7 +139,25 @@ public class AcountForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAccountActionPerformed
-        // TODO add your handling code here:
+        // TODO add your handling Radcliffe code here:
+        try {
+            if ((jTextField1.getText().isEmpty()) | (jTextField2.getText().isEmpty())|
+                    (jTextField3.getText().isEmpty()) | (jTextField4.getText().isEmpty())|
+                    (jTextField5.getText().isEmpty())) {
+
+                throw new CustomeException("Account text fields cannot be empty, please try again");
+
+            }else{
+                //Todo get the handler for account Anwar
+                //UserHandler.account(jTextField1.getText().isEmpty(),(jTextField2.getText().isEmpty(),jTextField3.getText().isEmpty(), jTextField4.getText().isEmpty(),
+                  //      jTextField5.getText().isEmpty());
+                UserHandler.login(jTextField1.getText(),jTextField2.getText());
+            }
+
+        }catch(CustomeException e){
+            e.printStackTrace();
+        }
+
     }//GEN-LAST:event_jButtonAccountActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
@@ -223,8 +241,8 @@ public class AcountForm extends javax.swing.JFrame {
         System.out.println("OnSuccessAccount");
     }
 
-    //@Override //Todo check the correctness of this anwar I have remove it for testing
-    public void onUnSuccessAccoun() {
+    //@Override //Todo check the correctness of this anwar I had to remove it for testing
+    public void onUnSuccessAccount() {
         // Todo show an error message as what they have toaught us in the module
 
         JOptionPane.showMessageDialog(null, "Error creating account!, Please try again");

@@ -6,9 +6,7 @@
 package CarRentalSystem.Forms;
 
 import javax.swing.*;
-
 import CarRentalSystem.Pojos.Cars;
-
 
 /**
  *
@@ -30,6 +28,7 @@ public class AvailableVehicleForm extends JFrame {
     DefaultListModel<String> myListBoxmodel = new DefaultListModel<>();
 
 
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,13 +46,13 @@ public class AvailableVehicleForm extends JFrame {
         jButtonConfirmBooking = new javax.swing.JButton();
         dateChooserCombo1 = new datechooser.beans.DateChooserCombo();
         dateChooserCombo2 = new datechooser.beans.DateChooserCombo();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
+        jTextFieldUserDetails = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         jListAvailableVehicles = new javax.swing.JList<>();
+        jPanelImageHolder = new javax.swing.JPanel();
         jButtonAdmin = new javax.swing.JButton();
         jButtonClose = new javax.swing.JButton();
 
@@ -113,7 +112,7 @@ public class AvailableVehicleForm extends JFrame {
                                 false,
                                 false,
                                 new datechooser.view.appearance.swing.ButtonPainter()),
-                        (datechooser.view.BackRenderer) null,
+                        (datechooser.view.BackRenderer)null,
                         false,
                         true)));
 
@@ -155,23 +154,19 @@ public class AvailableVehicleForm extends JFrame {
                                 false,
                                 false,
                                 new datechooser.view.appearance.swing.ButtonPainter()),
-                        (datechooser.view.BackRenderer) null,
+                        (datechooser.view.BackRenderer)null,
                         false,
                         true)));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel2.setText("User Details:");
+        jLabel2.setText("User Name:");
 
         javax.swing.GroupLayout jPanelStartTimeLayout = new javax.swing.GroupLayout(jPanelStartTime);
         jPanelStartTime.setLayout(jPanelStartTimeLayout);
         jPanelStartTimeLayout.setHorizontalGroup(
                 jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanelStartTimeLayout.createSequentialGroup()
-                                .addGroup(jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addGroup(jPanelStartTimeLayout.createSequentialGroup()
                                                 .addComponent(jLabelStartTime)
                                                 .addGap(34, 34, 34)
@@ -182,9 +177,9 @@ public class AvailableVehicleForm extends JFrame {
                                                 .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                                                 .addComponent(jLabel2)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelStartTimeLayout.createSequentialGroup()
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jTextFieldUserDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGroup(jPanelStartTimeLayout.createSequentialGroup()
                                                 .addGap(0, 0, Short.MAX_VALUE)
                                                 .addComponent(jButtonConfirmBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addContainerGap())
@@ -192,20 +187,21 @@ public class AvailableVehicleForm extends JFrame {
         jPanelStartTimeLayout.setVerticalGroup(
                 jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanelStartTimeLayout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 46, Short.MAX_VALUE)
-                                .addGap(77, 77, 77)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(jButtonConfirmBooking, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())
                         .addGroup(jPanelStartTimeLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
+                                        .addGroup(jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                .addComponent(jLabel2)
+                                                .addComponent(jTextFieldUserDetails, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addComponent(dateChooserCombo1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(dateChooserCombo2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGroup(jPanelStartTimeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                                 .addComponent(jLabelStartTime)
                                                 .addComponent(jLabel1)))
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addContainerGap(127, Short.MAX_VALUE))
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Available Vehicles", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
@@ -216,17 +212,22 @@ public class AvailableVehicleForm extends JFrame {
 
         jListAvailableVehicles.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jListAvailableVehicles.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
-
-            public int getSize() {
-                return strings.length;
-            }
-
-            public String getElementAt(int i) {
-                return strings[i];
-            }
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
         });
         jScrollPane3.setViewportView(jListAvailableVehicles);
+
+        javax.swing.GroupLayout jPanelImageHolderLayout = new javax.swing.GroupLayout(jPanelImageHolder);
+        jPanelImageHolder.setLayout(jPanelImageHolderLayout);
+        jPanelImageHolderLayout.setHorizontalGroup(
+                jPanelImageHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanelImageHolderLayout.setVerticalGroup(
+                jPanelImageHolderLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(0, 343, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -240,14 +241,18 @@ public class AvailableVehicleForm extends JFrame {
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                                 .addGap(496, 496, 496)
                                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jPanelImageHolder, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(5, 5, 5)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addContainerGap()
+                                                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 332, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(jPanelImageHolder, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                                 .addContainerGap())
         );
@@ -309,24 +314,39 @@ public class AvailableVehicleForm extends JFrame {
     }// </editor-fold>
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {
-        // close the application
-
+        switch(evt.getActionCommand())
+        {
+            case "Admin":
+            {
+                int index = this.jListAvailableVehicles.getSelectedIndices().length - 1;
+                while (this.jListAvailableVehicles.getSelectedIndices().length != 0)
+                {
+                    this.myListBoxmodel.removeElementAt(this.jListAvailableVehicles.getSelectedIndices()[index--]);
+                    jListAvailableVehicles.setModel(myListBoxmodel);
+                    //TODO remove car from database anwar
+                    ///cars.getCars().get(0).getAvailable().remove(index--);
+                }
+            }
+        }
     }
+
+
+
 
 
     private void jButtonConfirmBookingActionPerformed(java.awt.event.ActionEvent evt) {
 
+
+
     }
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         System.exit(0);
     }
-
     //create new instance of list item
-    //prevent the overwriting of periouse appointment
-    private void myListBoxHandler() {
-
+    //prevent the overwriting of previous entry
+    private void myListBoxHandler()
+    {
 
         cars.getCars().get(0).getAvailable().forEach(e->myListBoxmodel.addElement(e.getName()));
         jListAvailableVehicles.setModel(myListBoxmodel);
@@ -340,7 +360,7 @@ public class AvailableVehicleForm extends JFrame {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.orle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
@@ -388,10 +408,11 @@ public class AvailableVehicleForm extends JFrame {
     private javax.swing.JLabel jLabelStartTime;
     private javax.swing.JList<String> jListAvailableVehicles;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelImageHolder;
     private javax.swing.JPanel jPanelStartTime;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextFieldUserDetails;
     private javax.swing.ButtonGroup myButtonGroup;
-// End of variables declaration
+    // End of variables declaration
 }
+

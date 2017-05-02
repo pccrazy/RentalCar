@@ -8,7 +8,6 @@ import javax.swing.*;
 import java.awt.*;
 
 import CarRentalSystem.Pojos.User;
-//import CarRentalSystem.Utilities.UserHandler;
 
 /**
  * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
@@ -64,7 +63,7 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         jButtonRental.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButtonRental.setText("RENTAL");
+        jButtonRental.setText("Hire");
         jButtonRental.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRentalActionPerformed(evt);
@@ -157,9 +156,9 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         if(evt.getSource().equals(jButtonLogin)){
-
+            this.dispose(); //close the previous form
             LoginForm jf = new LoginForm();
-            jf.setTitle("Accont Sign In");
+            jf.setTitle("Account Sign In");
 
             jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -172,12 +171,9 @@ public class MainForm extends javax.swing.JFrame {
                     middle.y - (jf.getHeight() / 2));
 
             jf.pack();
-
-            //jf.setLocationRelativeTo(null);
             jf.setLocation(newLocation);
 
             jf.setVisible(true);
-           // jf.setVisible(true);
         }
     }
 
@@ -259,6 +255,5 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanelBorderCenter;
     private javax.swing.JPanel jPanelCenter;
-    // End of variables declaration
     // End of variables declaration
 }

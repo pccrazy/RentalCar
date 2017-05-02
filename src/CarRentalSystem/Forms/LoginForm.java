@@ -10,21 +10,19 @@ import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.*;
 import java.awt.*;
-
 import CarRentalSystem.Pojos.User;
+import CarRentalSystem.Pojos.Error;
+import CarRentalSystem.Utilities.CustomeException;
 import CarRentalSystem.Utilities.UserHandler;
 
-
-
-
 /**
- *
- * @author H121709
+ * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
  */
+
 public class LoginForm extends JFrame implements UserHandler {
 
     User user=User.getInstance();
-
+    Error error=Error.getErrorInstance();
 
     /**
      * Creates new form LoginForm
@@ -116,14 +114,20 @@ public class LoginForm extends JFrame implements UserHandler {
 
     private void startLoginProccess(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //
-        // TODO add your handling code here:
+        // TODO add your radcliffe add error handling code here:
 
+        try {
+            if ((jTextField1UserName.getText().isEmpty()) | (jTextPassword.getText().isEmpty())) {
 
+                throw new CustomeException("Login text fields cannot be empty, please try again!");
 
-        UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
+            }else{
+                UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
+            }
 
-
-
+        }catch(CustomeException e){
+            e.printStackTrace();
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -133,13 +137,12 @@ public class LoginForm extends JFrame implements UserHandler {
                // TODO add your handling code here:
        // you can open a new frame here as
        // i have assumed you have declared "frame" as instance variable
-//       AcountForm jf = new AcountForm();
-//       jf.setVisible(true);
-       
+
+       this.dispose(); //close the previous form
        if(evt.getSource().equals(jLabelCreateAccount)){
 
         AcountForm jf = new AcountForm();
-         jf.setTitle("Create Accont");
+        jf.setTitle("Create Account");
            
         jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
@@ -201,6 +204,7 @@ public class LoginForm extends JFrame implements UserHandler {
     @Override
     public void onSuccessLogin() {
         //Todo radclifee go to next GUI , close current
+        this.dispose(); //close the previous form
 
         AvailableVehicleForm jf = new AvailableVehicleForm();
         jf.setTitle("Available Hire Cars");
@@ -211,7 +215,6 @@ public class LoginForm extends JFrame implements UserHandler {
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
 
-        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Point middle = new Point(width / 2, height / 2);
         Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
         middle.y - (jf.getHeight() / 2));
@@ -223,16 +226,21 @@ public class LoginForm extends JFrame implements UserHandler {
         jf.setVisible(true);
 
         System.out.println("OnSuccessLogin");
+
     }
 
     @Override
     public void onUnSuccessLogin() {
         // Todo show an error message as what they have toaught us in the module
 
-        JOptionPane.showMessageDialog(null, "Wrong Login!, Please try again");
+        JOptionPane.showMessageDialog(null, "Invalid Login!, Please try again");
 
         System.out.println("On Error Login");
     }
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {
+        // TODO add your handling code here:
+        System.out.println("rad test");
+    }
     // End of variables declaration//GEN-END:variables
 }
