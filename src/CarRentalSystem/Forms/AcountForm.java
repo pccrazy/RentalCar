@@ -11,6 +11,7 @@ import java.util.Arrays;
 import javax.swing.*;
 
 import CarRentalSystem.Pojos.User;
+import CarRentalSystem.Utilities.CustomeException;
 import CarRentalSystem.Utilities.UserHelper;
 import CarRentalSystem.Utilities.UserSessionHandler;
 
@@ -240,14 +241,20 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
     newUser.setEmail(jEmail.getText());
     newUser.setAccountType("normal");
     UserHelper user = UserHelper.getInstance();
-   isValidateAccount();
-    if(isValidateAccount()){
-      user.addNewUser(newUser);
-      user.createNewUser();
+
+    try {
+      isValidateAccount();
+      if(isValidateAccount()){
+        user.addNewUser(newUser);
+        user.createNewUser();
+      }
+    }catch (CustomeException ex){
+      ex.getMessage();
     }
+
   }
 
-  public boolean isValidateAccount() {
+  public boolean isValidateAccount() throws CustomeException {
     // todo Anwar validate account
     // todo first check if user not already exist
     JTextField[] jTextFields = new JTextField[5];
@@ -260,6 +267,12 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
     boolean is_all_filedsNotEmpty =
         Arrays.stream(jTextFields)
             .allMatch(e -> (!e.getText().isEmpty()) && !(e.getText().length() == 0));
+
+    if(!is_all_filedsNotEmpty){
+      throw new CustomeException("Empty Fields are not allowed");
+    }
+
+
     boolean already_exist;
     try{
        already_exist  =
@@ -270,14 +283,21 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
                                 User validator = o;
                                 return validator.getUsername().equals(jUsername.getText());
                               }).findFirst().isPresent();
+       if(already_exist){
+         throw new CustomeException("User Name already exist");
+       }
     }catch (NullPointerException ex){
        already_exist = false;
     }
 
 
     boolean bothPasswordsMacthes = jPassword.getText().equals(jConfirm_password.getText());
+    if(!bothPasswordsMacthes){
+      throw new CustomeException("Passwords are not identical");
+    }
 
-    System.out.println(is_all_filedsNotEmpty + "  " + !already_exist + " " + bothPasswordsMacthes);
+
+    //System.out.println(is_all_filedsNotEmpty + "  " + !already_exist + " " + bothPasswordsMacthes);
 
     return is_all_filedsNotEmpty && (!already_exist) && bothPasswordsMacthes;
   }
