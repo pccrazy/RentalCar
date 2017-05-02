@@ -1,6 +1,7 @@
 package CarRentalSystem.Utilities;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
@@ -18,7 +19,7 @@ public class JsonFileReader {
 
   public static <T> T jsonToPojo(file whichFile, Class<T> pojoClass) {
     try {
-      Gson gson = new Gson();
+      Gson gson =  new Gson();
       InputStream in =
           pojoClass
               .getClass()
@@ -34,7 +35,8 @@ public class JsonFileReader {
     try {
       //write converted json data to a file named "CountryGSON.json"
       Gson gson = new Gson();
-      String json = gson.toJson(pojoClass);
+
+      String json =  gson.toJson(pojoClass);
       FileWriter writer =
           new FileWriter(
               pojoClass
