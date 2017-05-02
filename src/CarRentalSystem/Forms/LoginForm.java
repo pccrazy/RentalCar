@@ -11,6 +11,7 @@ import java.awt.Toolkit;
 import javax.swing.*;
 import java.awt.*;
 
+import CarRentalSystem.Utilities.CustomeException;
 import CarRentalSystem.Utilities.UserSessionHandler;
 import CarRentalSystem.Utilities.UserHelper;
 
@@ -122,7 +123,7 @@ public class LoginForm extends JFrame implements UserSessionHandler {
                 throw new CustomeException("Login text fields cannot be empty, please try again!");
 
             }else{
-                UserHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
+                UserSessionHandler.login(jTextField1UserName.getText(),jTextPassword.getText());
             }
 
         }catch(CustomeException e){

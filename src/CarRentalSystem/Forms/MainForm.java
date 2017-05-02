@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 
 import CarRentalSystem.Pojos.User;
+import CarRentalSystem.Utilities.UserHelper;
 
 /**
  * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
@@ -16,7 +17,7 @@ import CarRentalSystem.Pojos.User;
 public class MainForm extends javax.swing.JFrame {
 
 
-   User user=User.getInstance();
+   UserHelper user=UserHelper.getInstance();
 
 
     /**
