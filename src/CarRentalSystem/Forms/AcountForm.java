@@ -249,6 +249,7 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
       if(isValidateAccount()){
         user.addNewUser(newUser);
         user.createNewUser();
+
       }
     }catch (CustomeException ex){
       ex.getMessage();

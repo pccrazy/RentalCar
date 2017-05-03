@@ -18,6 +18,7 @@ import java.util.List;
 
 import javax.swing.*;
 
+import CarRentalSystem.Pojos.CurrentUser;
 import CarRentalSystem.Pojos.User;
 
 /** Created by CodeCrazy on 4/29/17. */
@@ -74,6 +75,8 @@ public class UserHelper {
   public void addNewUser(User user){
       getUsers();
       Users.add(user);
+      CurrentUser.setType("normal");
+      CurrentUser.setUsername(user.getUsername());
   }
 
   public void notifiySuccessLogin() {
@@ -94,11 +97,16 @@ public class UserHelper {
         Gson gson=new Gson();
         String json =  gson.toJson(Users);
 
+
         try {
+
+            //write converted json data to a file named "CountryGSON.json"
+
             Path currentRelativePath = Paths.get("");
             String s = currentRelativePath.toAbsolutePath().toString();
             //write converted json data to a file named "CountryGSON.json"
-            FileWriter writer = new FileWriter(getInstance().getClass().getResource(s+"/JsonFiles/Users.json").getFile());
+            FileWriter writer =
+                    new FileWriter(s+"/JsonFiles/Users.json");
             writer.write(json);
             writer.close();
             for (UserSessionHandler userHandler : listeners) {

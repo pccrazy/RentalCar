@@ -5,6 +5,8 @@
  */
 package CarRentalSystem.Forms;
 
+import javax.swing.*;
+
 import CarRentalSystem.Pojos.AvailableCars;
 import CarRentalSystem.Utilities.CarsHelper;
 import CarRentalSystem.Utilities.CustomeException;
@@ -35,6 +37,7 @@ public class CarForm extends javax.swing.JFrame {
         jTextFieldModel = new javax.swing.JTextField();
         jTextFieldType = new javax.swing.JTextField();
         jTextFieldImage = new javax.swing.JTextField();
+        jTextFieldImage.setVisible(false);
         jTextFieldMessenger = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -66,6 +69,7 @@ public class CarForm extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Image");
+        jLabel10.setVisible(false);
 
         jButtonClose.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonClose.setText("Close");
@@ -77,31 +81,22 @@ public class CarForm extends javax.swing.JFrame {
 
         jButtonClear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonClear.setText("Clear");
-        jButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonClearActionPerformed(evt);
-            }
-        });
+        jButtonClear.addActionListener(evt -> clearFields());
 
         jButtonAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButtonAdd.setText("Add ");
-        jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    jButtonAddActionPerformed(evt);
-                } catch (CustomeException e) {
-                    e.printStackTrace();
-                }
+        jButtonAdd.addActionListener(evt -> {
+            try {
+                jButtonAddActionPerformed(evt);
+            } catch (CustomeException e) {
+                e.printStackTrace();
             }
         });
 
         jButtonRemove.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButtonRemove.setVisible(false);
         jButtonRemove.setText("Remove");
-        jButtonRemove.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonRemoveActionPerformed(evt);
-            }
-        });
+
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -205,16 +200,19 @@ public class CarForm extends javax.swing.JFrame {
         newCar.setType(jTextFieldType.getText());
         carsHelper.getAvailable().add(newCar);
         carsHelper.updateAvailableCars();
+        JOptionPane.showMessageDialog(null, newCar.getName() + " is added successfully");
+        clearFields();
+
     }
 
-    private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {
+    private void clearFields() {
         this.jTextFieldCompany.setText(""); this.jTextFieldModel.setText("");
         this.jTextFieldImage.setText(""); this.jTextFieldType.setText("");
         this.jTextFieldMessenger.setText("");  this.jTextFieldName.setText("");
     }
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {
-        System.exit(0);
+        dispose();
     }
 
     private void jButtonRemoveActionPerformed(java.awt.event.ActionEvent evt) {
@@ -263,11 +261,7 @@ public class CarForm extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CarForm().setVisible(true);
-            }
-        });
+        java.awt.EventQueue.invokeLater(() -> new CarForm().setVisible(true));
     }
 
     // Variables declaration - do not modify

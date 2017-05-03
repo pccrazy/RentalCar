@@ -233,6 +233,8 @@ public class LoginForm extends JFrame implements UserSessionHandler {
 
         jf.setVisible(true);
 
+        dispose();
+
         System.out.println("OnSuccessLogin");
     }
 
