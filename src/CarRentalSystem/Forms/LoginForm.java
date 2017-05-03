@@ -17,7 +17,8 @@ import CarRentalSystem.Utilities.UserHelper;
 
 
 /**
- * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
+ *
+ * @author H121709
  */
 public class LoginForm extends JFrame implements UserSessionHandler {
 
@@ -114,7 +115,7 @@ public class LoginForm extends JFrame implements UserSessionHandler {
 
     private void startLoginProccess(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //
-        // TODO add your handling code here: done anwar please check
+        // TODO add your handling code here:
 
         try {
             if ((jTextField1UserName.getText().isEmpty()) | (jTextPassword.getText().isEmpty())) {
@@ -210,8 +211,7 @@ public class LoginForm extends JFrame implements UserSessionHandler {
 
     @Override
     public void onSuccessLogin() {
-        //Todo radclifee go to next GUI , close current (done) anwar please check
-        this.dispose(); //close the previous form
+        //Todo radclifee go to next GUI , close current
 
         AvailableVehicleForm jf = new AvailableVehicleForm();
         jf.setTitle("Available Hire Cars");
@@ -222,6 +222,7 @@ public class LoginForm extends JFrame implements UserSessionHandler {
         int width = gd.getDisplayMode().getWidth();
         int height = gd.getDisplayMode().getHeight();
 
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         Point middle = new Point(width / 2, height / 2);
         Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
         middle.y - (jf.getHeight() / 2));
@@ -237,7 +238,7 @@ public class LoginForm extends JFrame implements UserSessionHandler {
 
     @Override
     public void onUnSuccessLogin() {
-        // Todo show an error message as what they have toaught us in the module (done) anwar please check
+        // Todo show an error message as what they have toaught us in the module
 
         JOptionPane.showMessageDialog(null, "Invalid Login!, Please try again");
 

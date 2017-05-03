@@ -1,12 +1,8 @@
 package CarRentalSystem.Utilities;
 
-import java.util.Arrays;
-
+import CarRentalSystem.Pojos.CurrentUser;
 import CarRentalSystem.Pojos.User;
 
-/**
- * Created by CodeCrazy on 4/29/17.
- */
 public interface UserSessionHandler {
 
     static void login(String username, String passwrod){
@@ -16,8 +12,13 @@ public interface UserSessionHandler {
             .filter(
                 o -> {
                   User validator = o;
-                  return validator.getUsername().equals(username)
-                      && validator.getPassword().equals(passwrod);
+                   boolean exist= validator.getUsername().equals(username)
+                            && validator.getPassword().equals(passwrod);
+                   if(exist){
+                       CurrentUser.setUsername(validator.getUsername());
+                       CurrentUser.setType(validator.getAccountType());
+                   }
+                  return exist;
                 })
             .findFirst()
             .isPresent();
