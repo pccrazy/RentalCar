@@ -1,6 +1,6 @@
 package CarRentalSystem.Pojos;
 
-public class Rented  {
+public class RentedCars {
                int CarID;
                String Username;
                String startDate;

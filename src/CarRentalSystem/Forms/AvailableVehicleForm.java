@@ -12,8 +12,8 @@ import java.util.List;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 
-import CarRentalSystem.Pojos.Available;
-import CarRentalSystem.Pojos.Rented;
+import CarRentalSystem.Pojos.AvailableCars;
+import CarRentalSystem.Pojos.RentedCars;
 import CarRentalSystem.Utilities.CarsHelper;
 import CarRentalSystem.Pojos.CurrentUser;
 
@@ -27,7 +27,7 @@ public class AvailableVehicleForm extends JFrame {
   }
 
   //create new instance of list item
-  HashSet<Available> uniqueSet = new HashSet<>();
+  HashSet<AvailableCars> uniqueSet = new HashSet<>();
 
   CarsHelper cars = CarsHelper.getInstance();
   DefaultListModel<String> myListBoxmodel = new DefaultListModel<>();
@@ -535,7 +535,7 @@ public class AvailableVehicleForm extends JFrame {
             options[0]);
     if (selection == 0) {
 
-        Rented newRented = new Rented();
+        RentedCars newRented = new RentedCars();
         newRented.setCarID(cars.findSelectedCar(jListAvailableVehicles.getSelectedValue().trim()).getCarID());
         newRented.setStartDate(rentStartDate.getText());
         newRented.setEndDate(rentEndDate.getText());
@@ -543,9 +543,6 @@ public class AvailableVehicleForm extends JFrame {
         cars.getRentedCars().add(newRented);
         cars.newRent();
         myListBoxHandler();
-
-
-
 
 
     }
@@ -588,7 +585,7 @@ public class AvailableVehicleForm extends JFrame {
       available.removeAll(rented);
 
       available.stream().forEach(id -> {
-          Available  e = cars.findSelectedCarById(id);
+          AvailableCars e = cars.findSelectedCarById(id);
           myListBoxmodel.addElement(e.getCompany() + " " + e.getName() + " " + e.getModel());
       });
 

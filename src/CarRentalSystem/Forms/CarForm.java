@@ -5,6 +5,10 @@
  */
 package CarRentalSystem.Forms;
 
+import CarRentalSystem.Pojos.AvailableCars;
+import CarRentalSystem.Utilities.CarsHelper;
+import CarRentalSystem.Utilities.CustomeException;
+
 /**
  * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
  */
@@ -83,7 +87,11 @@ public class CarForm extends javax.swing.JFrame {
         jButtonAdd.setText("Add ");
         jButtonAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddActionPerformed(evt);
+                try {
+                    jButtonAddActionPerformed(evt);
+                } catch (CustomeException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -174,8 +182,29 @@ public class CarForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>
 
-    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) {
+    CarsHelper carsHelper=CarsHelper.getInstance();
+    private void jButtonAddActionPerformed(java.awt.event.ActionEvent evt) throws CustomeException {
         // TODO add your handling code here:
+        AvailableCars newCar=new AvailableCars();
+        newCar.setCarID(carsHelper.getLastCarID());
+        newCar.setCompany(jTextFieldCompany.getText());
+        try{
+            newCar.setMaxPassenger(Integer.parseInt(jTextFieldMessenger.getText()));
+        }catch (Exception ex){
+            throw new CustomeException("Max passengers must be a number ex:3");
+        }
+
+        try{
+            newCar.setModel(Integer.parseInt(jTextFieldModel.getText()));
+
+        }catch (Exception ex){
+            throw new CustomeException("Car model must be a number ex:1992");
+        }
+
+        newCar.setName(jTextFieldName.getText());
+        newCar.setType(jTextFieldType.getText());
+        carsHelper.getAvailable().add(newCar);
+        carsHelper.updateAvailableCars();
     }
 
     private void jButtonClearActionPerformed(java.awt.event.ActionEvent evt) {

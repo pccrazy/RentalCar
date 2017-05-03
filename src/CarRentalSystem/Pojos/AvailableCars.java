@@ -1,6 +1,6 @@
 package CarRentalSystem.Pojos;
 
-public class Available{
+public class AvailableCars {
         int CarID;
         String company;
         String name;
