@@ -212,7 +212,6 @@ public class LoginForm extends JFrame implements UserSessionHandler {
     @Override
     public void onSuccessLogin() {
         //Todo radclifee go to next GUI , close current
-        this.dispose(); //close the previous form
 
         AvailableVehicleForm jf = new AvailableVehicleForm();
         jf.setTitle("Available Hire Cars");

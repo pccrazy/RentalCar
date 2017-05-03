@@ -11,4 +11,5 @@ public class CustomeException extends Exception {
         super(s);
         JOptionPane.showMessageDialog(null, s);
     }
+
 }
