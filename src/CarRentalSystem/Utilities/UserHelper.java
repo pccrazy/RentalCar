@@ -3,9 +3,15 @@ package CarRentalSystem.Utilities;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -42,20 +48,26 @@ public class UserHelper {
   public  List<User> getUsers() {
      Gson gson = new Gson();
 
-      System.out.println("Reading JSON from a file");
-      System.out.println("----------------------------");
+      Path currentRelativePath = Paths.get("");
+      String s = currentRelativePath.toAbsolutePath().toString();
 
-      InputStream in =
-              this
-                      .getClass()
-                      .getResourceAsStream("/CarRentalSystem/JsonFiles/Users.json");
-      BufferedReader br = new BufferedReader(new InputStreamReader(in));
+      BufferedReader br = null;
+      try {
+           br = new BufferedReader(new FileReader(new File(s+"/JsonFiles/Users.json")));
+           System.out.println(s+"/JsonFiles/Users.json");
+           users = gson.fromJson(br, User[].class);
+          if(Users.isEmpty()){
+              Collections.addAll(Users,users);
+          }
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      } catch (IOException e) {
+          e.printStackTrace();
+      }
 
       //convert the json string back to object
-      users = gson.fromJson(br, User[].class);
-      if(Users.isEmpty()){
-          Collections.addAll(Users,users);
-      }
+
+
       return Users;
   }
 
@@ -83,8 +95,10 @@ public class UserHelper {
         String json =  gson.toJson(Users);
 
         try {
+            Path currentRelativePath = Paths.get("");
+            String s = currentRelativePath.toAbsolutePath().toString();
             //write converted json data to a file named "CountryGSON.json"
-            FileWriter writer = new FileWriter(getInstance().getClass().getResource("/CarRentalSystem/JsonFiles/Users.json").getFile());
+            FileWriter writer = new FileWriter(getInstance().getClass().getResource(s+"/JsonFiles/Users.json").getFile());
             writer.write(json);
             writer.close();
             for (UserSessionHandler userHandler : listeners) {

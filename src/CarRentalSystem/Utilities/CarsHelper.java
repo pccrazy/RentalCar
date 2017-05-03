@@ -3,9 +3,14 @@ package CarRentalSystem.Utilities;
 import com.google.gson.Gson;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -36,30 +41,42 @@ public class CarsHelper {
 
   public List<AvailableCars> getAvailable() {
     Gson gson = new Gson();
+      Path currentRelativePath = Paths.get("");
+      String s = currentRelativePath.toAbsolutePath().toString();
 
-    InputStream in =
-        this.getClass().getResourceAsStream("/CarRentalSystem/JsonFiles/Available.json");
-    BufferedReader br = new BufferedReader(new InputStreamReader(in));
+      BufferedReader br=null;
 
+      try {
+          br = new BufferedReader(new FileReader(new File(s+"/JsonFiles/Available.json")));
+        array_available = gson.fromJson(br, AvailableCars[].class);
+        if (available.isEmpty()) {
+          Collections.addAll(available, array_available);
+        }
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      }
     //convert the json string back to object
-    array_available = gson.fromJson(br, AvailableCars[].class);
-    if (available.isEmpty()) {
-      Collections.addAll(available, array_available);
-    }
+
     return available;
   }
 
   public List<RentedCars> getRentedCars() {
     Gson gson = new Gson();
+      Path currentRelativePath = Paths.get("");
+      String s = currentRelativePath.toAbsolutePath().toString();
+    BufferedReader br=null;
 
-    InputStream in = this.getClass().getResourceAsStream("/CarRentalSystem/JsonFiles/Rented.json");
-    BufferedReader br = new BufferedReader(new InputStreamReader(in));
-
+      try {
+          br = new BufferedReader(new FileReader(new File(s+"/JsonFiles/Rented.json")));
+        array_rented = gson.fromJson(br, RentedCars[].class);
+        if (rented.isEmpty()) {
+          Collections.addAll(rented, array_rented);
+        }
+      } catch (FileNotFoundException e) {
+          e.printStackTrace();
+      }
     //convert the json string back to object
-    array_rented = gson.fromJson(br, RentedCars[].class);
-    if (rented.isEmpty()) {
-      Collections.addAll(rented, array_rented);
-    }
+
 
     return rented;
   }
@@ -90,17 +107,18 @@ public class CarsHelper {
     String json = gson.toJson(getRentedCars());
 
     try {
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
       //write converted json data to a file named "CountryGSON.json"
       FileWriter writer =
-          new FileWriter(
-              getClass().getResource("/CarRentalSystem/JsonFiles/Rented.json").getFile());
+          new FileWriter(s+"/JsonFiles/Rented.json");
       writer.write(json);
       writer.close();
 
       //  write(json);
 
     } catch (Exception e) {
-      JOptionPane.showMessageDialog(null, "Error creating account!, Please try again");
+      JOptionPane.showMessageDialog(null, "Error on booking contact admin");
       e.printStackTrace();
     }
   }
@@ -111,9 +129,11 @@ public class CarsHelper {
 
     try {
       //write converted json data to a file named "CountryGSON.json"
-      FileWriter writer =
-          new FileWriter(
-              getClass().getResource("/CarRentalSystem/JsonFiles/Available.json").getFile());
+        Path currentRelativePath = Paths.get("");
+        String s = currentRelativePath.toAbsolutePath().toString();
+        //write converted json data to a file named "CountryGSON.json"
+        FileWriter writer =
+                new FileWriter(s+"/JsonFiles/Available.json");
       writer.write(json);
       writer.close();
 
