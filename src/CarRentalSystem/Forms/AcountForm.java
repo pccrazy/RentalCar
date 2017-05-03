@@ -15,7 +15,9 @@ import CarRentalSystem.Utilities.CustomeException;
 import CarRentalSystem.Utilities.UserHelper;
 import CarRentalSystem.Utilities.UserSessionHandler;
 
-/** @author H121709 */
+/**
+ * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
+ */
 public class AcountForm extends javax.swing.JFrame implements UserSessionHandler {
 
   UserHelper user = UserHelper.getInstance();
@@ -366,7 +368,8 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
   public void onNewAccountCreated() {
     //Todo Radcliffe show main Gui
     // Todo Radcliffe Exit this one
-    // Todo Radcliffe show a message that says user account is created sccussefully
+    // Todo Radcliffe show a message that says user account is created  done anwar please check
+    this.dispose(); //close the previous form
     AvailableVehicleForm jf = new AvailableVehicleForm();
     jf.setTitle("Available Vehicles");
 
@@ -386,7 +389,7 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
     jf.setLocation(newLocation);
 
     jf.setVisible(true);
-
+    JOptionPane.showMessageDialog(null, "Account created successfully.");
     System.out.println("OnSuccessAccount");
   }
 
@@ -400,7 +403,8 @@ public class AcountForm extends javax.swing.JFrame implements UserSessionHandler
 
   //@Override //Todo check the correctness of this anwar I have remove it for testing
   public void onUnSuccessAccount() {
-    // Todo show an error message as what they have toaught us in the module
+    // Todo show an error message as what they have taught us in the module done anwar please check
+    JOptionPane.showMessageDialog(null, "Error logging in!, Please try again");
 
     System.out.println("On Error Account");
   }

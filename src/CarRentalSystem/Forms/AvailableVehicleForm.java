@@ -8,9 +8,10 @@ package CarRentalSystem.Forms;
 import javax.swing.*;
 import CarRentalSystem.Pojos.Cars;
 
+import java.awt.*;
+
 /**
- *
- * @author Radcliffe Brown-H000063206-CKIT-510-2-Week5-6
+ * Created by Radcliffe Brown-H000063206-CKIT-510-2-Week5-6 30/04/2017
  */
 public class AvailableVehicleForm extends JFrame {
 
@@ -306,20 +307,30 @@ public class AvailableVehicleForm extends JFrame {
     }// </editor-fold>
 
     private void jButtonAdminActionPerformed(java.awt.event.ActionEvent evt) {
-        switch(evt.getActionCommand())
-        {
-            case "Admin":
-            {
-                int index = this.jListAvailableVehicles.getSelectedIndices().length - 1;
-                while (this.jListAvailableVehicles.getSelectedIndices().length != 0)
-                {
-                    this.myListBoxmodel.removeElementAt(this.jListAvailableVehicles.getSelectedIndices()[index--]);
-                    jListAvailableVehicles.setModel(myListBoxmodel);
-                    //TODO remove car from database anwar
-                    ///cars.getCars().get(0).getAvailable().remove(index--);
-                }
-            }
-        }
+
+        //Todo anwar please check the required action here
+        this.dispose(); //close the previous form
+
+        CarForm jf = new CarForm();
+        jf.setTitle("Update Vehicle Database");
+
+        jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+        int width = gd.getDisplayMode().getWidth();
+        int height = gd.getDisplayMode().getHeight();
+
+        Point middle = new Point(width / 2, height / 2);
+        Point newLocation = new Point(middle.x - (jf.getWidth() / 2),
+                middle.y - (jf.getHeight() / 2));
+
+        jf.pack();
+
+        jf.setLocation(newLocation);
+
+        jf.setVisible(true);
+
+        System.out.println("Update Vehicle database");
     }
 
 

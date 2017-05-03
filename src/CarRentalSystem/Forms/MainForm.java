@@ -154,7 +154,7 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>
 
     private void jButtonLoginActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        // TODO add your handling code here: done anwar please check
 
         if(evt.getSource().equals(jButtonLogin)){
             this.dispose(); //close the previous form
@@ -179,12 +179,11 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     private void jButtonCloseActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
         System.exit(0);
     }
 
     private void jButtonRentalActionPerformed(java.awt.event.ActionEvent evt) {
-        // TODO add your handling code here:
+        // TODO add your handling code here: button test now cal Hire
     }
 
 
